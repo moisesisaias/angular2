@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'fa-root',
   template: `
     <h1>Root Component</h1>
-    <fa-databinding></fa-databinding>  
+    <fa-databinding></fa-databinding> 
   `,
   styles: [`
     h1 {
