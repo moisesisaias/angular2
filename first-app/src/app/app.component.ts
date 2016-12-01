@@ -1,9 +1,19 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'fa-root',
   template: `
-      <h1>Inline Template</h1>
+    <h1>Inline Template</h1>
+    <fa-other></fa-other>
+    <fa-another>
+      <div>
+        <h1>Hello!</h1>
+        <p>World!</p>
+      </div>
+    </fa-another>
+    <fa-another>
+      <p>Something else</p>
+    </fa-another>    
   `,
   styles: [`
     h1 {
