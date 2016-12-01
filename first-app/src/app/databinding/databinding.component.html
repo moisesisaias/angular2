@@ -1,0 +1,10 @@
+<h1>String Interpolation</h1>
+<p>
+  {{stringInterpolation}} |
+  {{numberInterpolation}}
+</p>
+<hr>  
+<h1>Property Interpolation</h1>
+<input type="text" [value]="stringInterpolation">
+<p [ngClass]="{redBorder: onTest()}">Is it styled?</p>
+<p [ngStyle]="{color: 'purple'}">Is it styled?</p>
