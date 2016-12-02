@@ -11,6 +11,14 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class EventBindingComponent implements OnInit {
   @Output() clicked = new EventEmitter<string>();
+  /*
+  I can give a different name for my event outside of this class. For instance:
+  
+  @Output('summitCh') summitChange = new EventEmitter<string>();
+  
+  In this case I have to identify this event as (summitCh) when a I want to listen to it
+  with the component. And I think that I can do it with the properties as well.
+  */
   @Output() summitChange = new EventEmitter<string>();
  
   onClicked()  {
