@@ -8,7 +8,8 @@ import { Component,
   AfterViewChecked,
   OnDestroy,
   Output, 
-  EventEmitter
+  EventEmitter, 
+  Input
  } from '@angular/core';
 
 @Component({
@@ -16,14 +17,18 @@ import { Component,
   template: `
     <p>
       lifecycle Works!
-      <button (click)="delete()">Click to delete</button>
     </p>
+    <button (click)="delete()">Click to delete</button>
+    <ng-content></ng-content>
+    <hr>
+    {{ bindable }}
   `,
   styles: []
 })
 export class LifecycleComponent implements OnChanges, OnInit, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit,
  AfterViewChecked, OnDestroy {
    @Output() deleteComponent = new EventEmitter<boolean>();
+   @Input() bindable = 1000;
 
    delete(){
      this.deleteComponent.emit(true);
