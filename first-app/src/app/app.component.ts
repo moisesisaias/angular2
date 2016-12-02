@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
   selector: 'fa-root',
   template: `
     <h1>Root Component</h1>
-    <fa-databinding></fa-databinding> 
+    <fa-lifecycle *ngIf="!delete"></fa-lifecycle> 
+    <button (click)="delete = !delete">Click to delete</button>
   `,
   styles: [`
     h1 {
@@ -13,5 +14,6 @@ import { Component } from '@angular/core';
   `]
 })
 export class AppComponent {
+  delete: boolean = false;
   title = 'I changed it!';
 }
