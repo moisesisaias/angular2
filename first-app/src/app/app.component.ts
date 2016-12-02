@@ -4,8 +4,7 @@ import { Component } from '@angular/core';
   selector: 'fa-root',
   template: `
     <h1>Root Component</h1>
-    <fa-lifecycle *ngIf="!delete"></fa-lifecycle> 
-    <button (click)="delete = !delete">Click to delete</button>
+    <fa-lifecycle (deleteComponent)="delete = $event" *ngIf="!delete"></fa-lifecycle> 
   `,
   styles: [`
     h1 {
