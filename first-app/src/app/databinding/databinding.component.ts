@@ -12,6 +12,11 @@ export class DatabindingComponent implements OnInit {
   onTest() : boolean{
     return true;
   }
+
+  clickAction(value: string) {
+    alert(value);
+  }
+
   ngOnInit() {
   }
 

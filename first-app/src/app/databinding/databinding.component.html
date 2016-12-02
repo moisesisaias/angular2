@@ -14,4 +14,5 @@
 <fa-property-binding [result]="10"></fa-property-binding>
 <hr>
 <h1>Event Binding</h1>
-<fa-event-binding></fa-event-binding> 
+<fa-event-binding (clicked)="clickAction($event)" (summitChange)="stringInterpolation = $event"></fa-event-binding> 
+<!--fa-event-binding (clicked)="stringInterpolation = 'Hola'"></fa-event-binding--> 
