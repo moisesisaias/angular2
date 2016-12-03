@@ -19,6 +19,8 @@ import { Component } from '@angular/core';
   `]
 })
 export class AppComponent {
+  // ViewChild
+  // ContentChild
   delete: boolean = false;
   title = 'I changed it!';
   test: string = 'Starting Value';
