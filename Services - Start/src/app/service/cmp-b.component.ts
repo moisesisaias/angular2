@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { LogService } from '../log.service'
+import {DataService} from "../data.service";
 
 @Component({
     selector: 'si-cmp-b',
@@ -27,7 +28,7 @@ export class CmpBComponent implements OnInit {
     value = '';
     items: string[] = [];
 
-    constructor(private logService: LogService) {
+    constructor(private logService: LogService, private dataService: DataService) {
 
     }
 
@@ -35,10 +36,14 @@ export class CmpBComponent implements OnInit {
       this.logService.writeToLog(value);
     }
 
+
     onStore(value: string) {
+      this.dataService.addData(value);
     }
 
     onGet() {
+      this.items = this.dataService.getData().slice(0);
+      // this.items = this.dataService.getData(); I want to pass the same array that the service has.
     }
 
     ngOnInit() {

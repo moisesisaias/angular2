@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { LogService } from '../log.service'
+import { DataService } from '../data.service'
 
 @Component({
     selector: 'si-cmp-a',
@@ -28,7 +29,7 @@ export class CmpAComponent {
     value = '';
     items: string[] = [];
 
-    constructor(private logService: LogService) {
+    constructor(private logService: LogService, private dataService: DataService) {
 
     }
 
@@ -37,11 +38,12 @@ export class CmpAComponent {
     }
 
     onStore(value: string) {
-
+      this.dataService.addData(value);
     }
 
     onGet() {
-
+      this.items = this.dataService.getData().slice(0);
+      // this.items = this.dataService.getData(); I want to pass the same array that the service has.
     }
 
     onSend(value: string) {
