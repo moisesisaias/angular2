@@ -7,4 +7,4 @@
 <div [ngStyle]="{'background-color': 'red'}"></div>
 <br>
 <h2>Custom Attribute Directive</h2>
-<div highlight>Some text </div>
+<div [highlight]="'red'" [defaultColor]="'yellow'">Some text </div> <!--I do have to use [] when I bind a property whit the directive-->
