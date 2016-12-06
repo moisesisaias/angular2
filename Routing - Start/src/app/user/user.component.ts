@@ -20,7 +20,7 @@ export class UserComponent implements OnDestroy{
   }
 
   onNavigate(){
-    this.router.navigate(['/']);
+    this.router.navigate(['/'],{queryParams:{'analytics': 100, 'user': this.id}});
   }
 
   ngOnDestroy(){
