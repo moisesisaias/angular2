@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-10">
+          <h1>Hello World!</h1>
+          <hr>
+          <a [routerLink]="['']">Home</a>
+          <!--when I use "user" as the path an using a relative path and
+          when I use "/use" it's a absolute. I can also use "../" to navigate in my app-->
+          <a [routerLink]="['user']">User</a>
+          <hr>
+          <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
