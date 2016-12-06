@@ -35,3 +35,4 @@ import {ShoppingListService} from "./shopping-list/shopping-list.service";
   bootstrap: [RecipeBookComponent]
 })
 export class AppModule { }
+
