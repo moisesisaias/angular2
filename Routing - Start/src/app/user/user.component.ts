@@ -1,17 +1,19 @@
 import { Component, OnDestroy } from '@angular/core';
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-user-component',
   template: `
       <h1>User Component</h1>
-      <a [routerLink]="['/user']">User</a>
       <button (click)="onNavigate()">Go Home</button>
+      {{id}}
     `
 })
 export class UserComponent {
-  constructor(private router: Router){
+  id:string;
 
+  constructor(private router: Router, private activatedRouter: ActivatedRoute){
+     this.id = this.activatedRouter.snapshot.params['id'];
   }
 
   onNavigate(){
