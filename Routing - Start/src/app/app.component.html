@@ -5,7 +5,7 @@
           <hr>
           <!--In order to preserve a query param or a fragment one just has to set true the property
           preserveQueryParam or PreserveFragment-->
-          <a [routerLink]="['']" [queryParams]="{'analytics': 400}" [fragment]="'section1'">Home</a> |
+          <a [routerLink]="['']" [queryParams]="{'analytics': 400}" [fragment]="'section1'" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a> |
           <input type="text" #id (input)="0">
           <!--when I use "user" as the path an using a relative path and
           when I use "/use" it's a absolute. I can also use "../" to navigate in my app-->
