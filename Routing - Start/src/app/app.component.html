@@ -3,7 +3,9 @@
         <div class="col-xs-10">
           <h1>Hello World!</h1>
           <hr>
-          <a [routerLink]="['']" [queryParams]="{'analytics': 400}">Home</a> |
+          <!--In order to preserve a query param or a fragment one just has to set true the property
+          preserveQueryParam or PreserveFragment-->
+          <a [routerLink]="['']" [queryParams]="{'analytics': 400}" [fragment]="'section1'">Home</a> |
           <input type="text" #id (input)="0">
           <!--when I use "user" as the path an using a relative path and
           when I use "/use" it's a absolute. I can also use "../" to navigate in my app-->

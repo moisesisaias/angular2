@@ -9,6 +9,7 @@ import {ActivatedRoute} from "@angular/router";
       Home Component! 
     </h1>
     <p *ngIf="!!param"> Query Param: {{param}}</p>
+    <div id="section1">Section1</div>
   `,
   styles: []
 })

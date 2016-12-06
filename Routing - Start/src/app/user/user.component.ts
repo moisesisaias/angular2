@@ -8,6 +8,8 @@ import {Subscription} from "rxjs";
       <h1>User Component</h1>
       <button (click)="onNavigate()">Go Home</button>
       {{id}}
+      <hr>
+      <router-outlet></router-outlet>
     `
 })
 export class UserComponent implements OnDestroy{
@@ -20,7 +22,7 @@ export class UserComponent implements OnDestroy{
   }
 
   onNavigate(){
-    this.router.navigate(['/'],{queryParams:{'analytics': 100, 'user': this.id}});
+    this.router.navigate(['/'],{queryParams:{'analytics': 100, 'user': this.id}, fragment: 'section1'});
   }
 
   ngOnDestroy(){
