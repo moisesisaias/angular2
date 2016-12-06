@@ -3,10 +3,11 @@
         <div class="col-xs-10">
           <h1>Hello World!</h1>
           <hr>
-          <a [routerLink]="['']">Home</a>
+          <a [routerLink]="['']">Home</a> |
+          <input type="text" #id (input)="0">
           <!--when I use "user" as the path an using a relative path and
           when I use "/use" it's a absolute. I can also use "../" to navigate in my app-->
-          <a [routerLink]="['user']">User</a>
+          <a [routerLink]="['user', id.value]">User</a>
           <hr>
           <router-outlet></router-outlet>
         </div>
