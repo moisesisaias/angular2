@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Form} from "@angular/forms";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'template-driven',
@@ -19,10 +19,14 @@ export class TemplateDrivenComponent {
   user = {
     username: 'Name',
     password: 'password',
-    email: 'example@email.com'
+    email: 'example@email.com',
+    gender: 'male'
   };
-  onSubmit(form: Form) {
-    console.log(form);
+
+  genders = ['male', 'female'];
+
+  onSubmit(form: NgForm) {
+    console.log(form.value);
     console.log(this.user);
   }
 }
