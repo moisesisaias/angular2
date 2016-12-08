@@ -17,9 +17,9 @@ import {Form} from "@angular/forms";
 })
 export class TemplateDrivenComponent {
   user = {
-    username: '',
-    password: '',
-    email: ''
+    username: 'Name',
+    password: 'password',
+    email: 'example@email.com'
   };
   onSubmit(form: Form) {
     console.log(form);
