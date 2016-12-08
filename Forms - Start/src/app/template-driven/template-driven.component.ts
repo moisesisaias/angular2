@@ -3,7 +3,17 @@ import {Form} from "@angular/forms";
 
 @Component({
   selector: 'template-driven',
-  templateUrl: 'template-driven.component.html'
+  templateUrl: 'template-driven.component.html',
+  styles: [
+    `
+      input.ng-invalid {
+        border: 1px solid red;
+      }
+      input.ng-pristine {
+        border: 1px solid #ccc;
+      }
+    `
+  ]
 })
 export class TemplateDrivenComponent {
   user = {
