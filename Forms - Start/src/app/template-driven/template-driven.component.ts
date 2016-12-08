@@ -23,5 +23,6 @@ export class TemplateDrivenComponent {
   };
   onSubmit(form: Form) {
     console.log(form);
+    console.log(this.user);
   }
 }
