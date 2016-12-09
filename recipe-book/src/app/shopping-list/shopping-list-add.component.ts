@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges} from '@angular/core';
+import {Component, OnInit, Input, OnChanges, Output, EventEmitter} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {ShoppingListService} from "./shopping-list.service";
 import {Ingredient} from "../ingredient";
@@ -9,7 +9,8 @@ import {Ingredient} from "../ingredient";
   styles: []
 })
 export class ShoppingListAddComponent implements OnInit, OnChanges {
-  @Input() item: Ingredient
+  @Input() item: Ingredient;
+  @Output() cleared = new EventEmitter();
   isAdd: boolean = true;
 
   constructor(private sls: ShoppingListService) { }
@@ -19,12 +20,12 @@ export class ShoppingListAddComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes) {
     if(changes.item.currentValue === null){
-      this.isAdd = true;
       this.item ={name:null, amount:null};
+      this.onClear();
     }else {
       this.isAdd = false;
     }
-    console.log('change');
+    //console.log('change');
   }
 
   onSubmit(form: NgForm){
@@ -33,19 +34,27 @@ export class ShoppingListAddComponent implements OnInit, OnChanges {
     if(!this.isAdd){
       // Edit
       this.sls.editItem(this.item, ingredient);
+      this.onClear();
     }
     else {
       this.item = ingredient;
-      this.sls.addItem(this.item);
+      this.sls.addItem(ingredient);
       // form.reset();
       // this.item = null;
     }
-    console.log(form);
+
+    //console.log(form);
+  }
+
+  onDelete(){
+    this.sls.deleteItem(this.item);
+    this.onClear();
   }
 
   onClear(){
     // this.item = null;
-    // this.isAdd = true;
+    this.isAdd = true;
+    this.cleared.emit(null);
   }
 
 }

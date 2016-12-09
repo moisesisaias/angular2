@@ -22,4 +22,8 @@ export class ShoppingListComponent implements OnInit {
     // console.log('onSelectItem');
     // console.log(item);
   }
+
+  onCleared() {
+    this.selectedItem = null;
+  }
 }
