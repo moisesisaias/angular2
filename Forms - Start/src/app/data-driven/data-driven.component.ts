@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FormGroup, FormControl, Validators, FormArray} from "@angular/forms";
+import {FormGroup, FormControl, Validators, FormArray, FormBuilder} from "@angular/forms";
 
 @Component({
     selector: 'data-driven',
@@ -13,24 +13,40 @@ export class DataDrivenComponent {
       'female'
     ];
 
-    constructor(){
-      this.myForm = new FormGroup(
-        {
-          'userData': new FormGroup({
-            'username': new FormControl('Max', Validators.required),
-            'email': new FormControl('',
-              [
-                Validators.required,
-                Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
-              ])
-          }),
-          'password': new FormControl('', Validators.required),
-          'gender': new FormControl('male'),
-          'hobbies': new FormArray([
-            new FormControl('Cooking', Validators.required)
-          ])
-        }
-      );
+    constructor(private formBuilder: FormBuilder){
+      // this.myForm = new FormGroup(
+      //   {
+      //     'userData': new FormGroup({
+      //       'username': new FormControl('Max', Validators.required),
+      //       'email': new FormControl('',
+      //         [
+      //           Validators.required,
+      //           Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+      //         ])
+      //     }),
+      //     'password': new FormControl('', Validators.required),
+      //     'gender': new FormControl('male'),
+      //     'hobbies': new FormArray([
+      //       new FormControl('Cooking', Validators.required)
+      //     ])
+      //   }
+      // );
+
+      this.myForm = this.formBuilder.group({
+            'userData': this.formBuilder.group({
+              'username':['Max', Validators.required],
+              'email': ['',
+                [
+                  Validators.required,
+                  Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+                ]]
+            }),
+            'password': ['', Validators.required],
+            'gender': ['male'],
+            'hobbies': this.formBuilder.array([
+              ['Cooking', Validators.required]
+            ])
+          })
     }
 
     onSubmit(){
