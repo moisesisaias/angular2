@@ -34,7 +34,7 @@ export class DataDrivenComponent {
 
       this.myForm = this.formBuilder.group({
             'userData': this.formBuilder.group({
-              'username':['Max', Validators.required],
+              'username':['Max', [Validators.required, this.exampleValidator]],
               'email': ['',
                 [
                   Validators.required,
@@ -55,5 +55,12 @@ export class DataDrivenComponent {
 
     onAddHobby() {
       (<FormArray>this.myForm.controls['hobbies']).push(new FormControl('', Validators.required));
+    }
+
+    exampleValidator(control: FormControl): {[c:string]: boolean} {
+      if( control.value === 'Example' ){
+        return {example: true}
+      }
+      return null;
     }
 }
