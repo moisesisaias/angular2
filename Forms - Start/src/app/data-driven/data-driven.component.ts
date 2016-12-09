@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {FormGroup, FormControl, Validators, FormArray, FormBuilder} from "@angular/forms";
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 
 @Component({
     selector: 'data-driven',
     templateUrl: 'data-driven.component.html'
 })
-export class DataDrivenComponent {
+export class DataDrivenComponent implements OnInit, OnDestroy{
     myForm: FormGroup;
+
+    private subscription: Subscription;
+    private subscription2: Subscription;
 
     genders= [
       'male',
@@ -47,7 +50,25 @@ export class DataDrivenComponent {
             'hobbies': this.formBuilder.array([
               ['Cooking', Validators.required, this.asyncExampleValidator]
             ])
-          })
+          });
+
+
+    }
+
+    ngOnInit() {
+      this.subscription = this.myForm.valueChanges.subscribe( (data) => {
+        console.log(data);
+      });
+
+      this.subscription2 = this.myForm.statusChanges.subscribe( (data) => {
+        console.log(data);
+      });
+
+    }
+
+    ngOnDestroy() {
+      this.subscription.unsubscribe();
+      this.subscription2.unsubscribe();
     }
 
     onSubmit(){
