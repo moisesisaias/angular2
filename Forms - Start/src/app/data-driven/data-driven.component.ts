@@ -55,7 +55,7 @@ export class DataDrivenComponent {
     }
 
     onAddHobby() {
-      (<FormArray>this.myForm.controls['hobbies']).push(new FormControl('', Validators.required));
+      (<FormArray>this.myForm.controls['hobbies']).push(new FormControl('', Validators.required, this.asyncExampleValidator));
     }
 
     exampleValidator(control: FormControl): {[c:string]: boolean} {
