@@ -9,8 +9,8 @@ import {Observable, Subscription} from "rxjs";
 export class DataDrivenComponent implements OnInit, OnDestroy{
     myForm: FormGroup;
 
-    private subscription: Subscription;
-    private subscription2: Subscription;
+    /* private subscription: Subscription;
+    private subscription2: Subscription;*/
 
     genders= [
       'male',
@@ -56,19 +56,19 @@ export class DataDrivenComponent implements OnInit, OnDestroy{
     }
 
     ngOnInit() {
-      this.subscription = this.myForm.valueChanges.subscribe( (data) => {
+     /* this.subscription = this.myForm.valueChanges.subscribe( (data) => {
         console.log(data);
       });
 
       this.subscription2 = this.myForm.statusChanges.subscribe( (data) => {
         console.log(data);
-      });
+      });*/
 
     }
 
     ngOnDestroy() {
-      this.subscription.unsubscribe();
-      this.subscription2.unsubscribe();
+      /*this.subscription.unsubscribe();
+      this.subscription2.unsubscribe();*/
     }
 
     onSubmit(){
