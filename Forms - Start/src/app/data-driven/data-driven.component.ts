@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FormGroup, FormControl, Validators} from "@angular/forms";
+import {FormGroup, FormControl, Validators, FormArray} from "@angular/forms";
 
 @Component({
     selector: 'data-driven',
@@ -25,12 +25,19 @@ export class DataDrivenComponent {
               ])
           }),
           'password': new FormControl('', Validators.required),
-          'gender': new FormControl('male')
+          'gender': new FormControl('male'),
+          'hobbies': new FormArray([
+            new FormControl('Cooking', Validators.required)
+          ])
         }
       );
     }
 
     onSubmit(){
       console.log(this.myForm);
+    }
+
+    onAddHobby() {
+      (<FormArray>this.myForm.controls['hobbies']).push(new FormControl('', Validators.required));
     }
 }
