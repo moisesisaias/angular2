@@ -32,7 +32,12 @@ export class HttpComponent implements OnInit, OnDestroy{
 
   onSubmit(username: string, email: string){
     this.subscription2 = this.httpService.sendData({username: username, email: email})
-      .subscribe((data:any) => console.log(data));
+      .subscribe(
+        (data:any) => console.log(data),
+        error => {
+          console.log(error);
+        }
+      );
   }
 
   onGetData(){
