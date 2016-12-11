@@ -3,8 +3,8 @@
     <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-xs-12">
-          <button type="submit" class="btn btn-success">Save</button>
-          <a class="btn btn-danger">Cancel</a>
+          <button type="submit" class="btn btn-success" [disabled]="!recipeForm.valid">Save</button>
+          <a class="btn btn-danger" (click)="onCancel()">Cancel</a>
         </div>
       </div>
       <div class="row">
@@ -27,14 +27,15 @@
               type="text"
               id="image-url"
               class="form-control"
-              formControlName="imagePath">
+              formControlName="imagePath"
+              #imageUrl>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
           <div class="img">
-            <img [src]="recipeForm.controls['imagePath'].value">
+            <img [src]="imageUrl.value">
           </div>
         </div>
       </div>
@@ -54,8 +55,10 @@
       <div class="row">
         <div class="col-xs-12">
           <ul class="list-group" formArrayName="ingredients" >
-            <div class="row">
-              <div *ngFor="let ing of recipeForm.controls['ingredients'].controls; let i = index" formGroupName="{{i}}">
+            <div
+              class="row"
+              *ngFor="let ingredient of recipeForm.controls['ingredients'].controls; let i = index">
+              <div formGroupName="{{i}}">
                 <div class="col-sm-5">
                   <input
                     type="text"
@@ -69,7 +72,7 @@
                     formControlName="amount">
                 </div>
                 <div class="col-sm-2">
-                  <button class="btn btn-danger">X</button>
+                  <button class="btn btn-danger" (click)="onDeleteItem(i)">X</button>
                 </div>
               </div>
 
@@ -85,12 +88,16 @@
 <div class="row">
   <div class="col-xs-12">
     <div class="form-group row">
-      <div class="col-md-5"><input type="text" class="form-control"></div>
-      <div class="col-md-5"><input type="text" class="form-control"></div>
+      <div class="col-md-5">
+        <input type="text" class="form-control" #name>
+      </div>
+      <div class="col-md-5">
+        <input type="text" class="form-control" #amount>
+      </div>
       <div class="col-md-2">
         <button
           type="button"
-          class="btn btn-primary">+</button>
+          class="btn btn-primary" (click)="onAddItem(name.value, amount.value)">+</button>
       </div>
     </div>
   </div>
