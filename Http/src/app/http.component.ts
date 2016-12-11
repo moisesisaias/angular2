@@ -9,6 +9,7 @@ import {Response} from "@angular/http";
   providers: [HttpService]
 })
 export class HttpComponent implements OnInit, OnDestroy{
+  items: any[] = [];
   title = 'hp works!';
   private subscription: Subscription;
   private subscription2: Subscription;
@@ -30,5 +31,17 @@ export class HttpComponent implements OnInit, OnDestroy{
   onSubmit(username: string, email: string){
     this.subscription2 = this.httpService.sendData({username: username, email: email})
       .subscribe((data:any) => console.log(data));
+  }
+
+  onGetData(){
+    this.httpService.getOwnData()
+      .subscribe( (data:any) => {
+        const myArray =[];
+        for(let key in data){
+          myArray.push(data[key]);
+        }
+
+        this.items = myArray;
+      });
   }
 }

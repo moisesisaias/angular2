@@ -11,7 +11,7 @@ export class HttpService {
   getData(){
     return this.http.get('https://angular2-course-a6739.firebaseio.com/title.json')
       .map((response: Response) => {
-        response.json();
+        return response.json();
       });
   }
 
@@ -22,5 +22,12 @@ export class HttpService {
 
     return this.http.post('https://angular2-course-a6739.firebaseio.com/data.json', body, headers)
       .map( (response) => response.json());
+  }
+
+  getOwnData(){
+    return this.http.get("https://angular2-course-a6739.firebaseio.com/data.json")
+      .map((response) => {
+        return response.json();
+      });
   }
 }
