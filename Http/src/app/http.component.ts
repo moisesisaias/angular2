@@ -11,17 +11,24 @@ import {Response} from "@angular/http";
 export class HttpComponent implements OnInit, OnDestroy{
   title = 'hp works!';
   private subscription: Subscription;
-  constructor(private http: HttpService){
+  private subscription2: Subscription;
+  constructor(private httpService: HttpService){
 
   }
 
   ngOnInit(){
-    this.subscription = this.http.getData().subscribe( (data:any) => {
+    /*this.subscription = this.httpService.getData().subscribe( (data:any) => {
       console.log(data);
-    });
+    });*/
   }
 
   ngOnDestroy(){
     this.subscription.unsubscribe();
+    this.subscription2.unsubscribe();
+  }
+
+  onSubmit(username: string, email: string){
+    this.subscription2 = this.httpService.sendData({username: username, email: email})
+      .subscribe((data:any) => console.log(data));
   }
 }

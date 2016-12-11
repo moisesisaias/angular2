@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Http, Response} from "@angular/http";
+import {Http, Response, Headers} from "@angular/http";
 import 'rxjs/Rx';
 
 @Injectable()
@@ -13,5 +13,14 @@ export class HttpService {
       .map((response: Response) => {
         response.json();
       });
+  }
+
+  sendData(user: any){
+    const body = JSON.stringify(user);
+    let headers: Headers = new Headers();
+    headers.append('Content-type', 'application/json');
+
+    return this.http.post('https://angular2-course-a6739.firebaseio.com/data.json', body, headers)
+      .map( (response) => response.json());
   }
 }
