@@ -1,6 +1,7 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {HttpService} from "./http.service";
-import {Subscription} from "rxjs";
+import {Subscription, Observable} from "rxjs";
+import {Response} from "@angular/http";
 
 @Component({
   selector: 'hp-root',
@@ -15,8 +16,8 @@ export class HttpComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit(){
-    this.subscription = this.http.getData().subscribe( response => {
-      console.log(response);
+    this.subscription = this.http.getData().subscribe( (data:any) => {
+      console.log(data);
     });
   }
 
