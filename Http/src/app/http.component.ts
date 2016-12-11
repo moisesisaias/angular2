@@ -13,6 +13,8 @@ export class HttpComponent implements OnInit, OnDestroy{
   title = 'hp works!';
   private subscription: Subscription;
   private subscription2: Subscription;
+  asyncString = this.httpService.getData();
+
   constructor(private httpService: HttpService){
 
   }
