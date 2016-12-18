@@ -10,10 +10,18 @@ import { Component } from "@angular/core";
         
                     <ul class="nav navbar-nav">
         
-                        <li><a>Sign Up</a></li>
-                        <li><a>Sign In</a></li>
-                        <li><a>Protected</a></li>
-        
+                        <li routerLinkActive="active" 
+                            [routerLinkActiveOptions]="{exact:true}">
+                          <a [routerLink]="['/signup']">Sign Up</a>
+                         </li>
+                        <li routerLinkActive="active"
+                            [routerLinkActiveOptions]="{exact:true}">
+                          <a [routerLink]="['/signin']">Sign In</a>
+                        </li>
+                        <li routerLinkActive="active"
+                            [routerLinkActiveOptions]="{exact:true}">
+                            <a [routerLink]="['/protected']">Protected</a>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
         
@@ -24,7 +32,10 @@ import { Component } from "@angular/core";
             </nav>
         
         </header>
-    `
+    `,
+  styles: [`
+    
+  `]
 })
 export class HeaderComponent {
 }
